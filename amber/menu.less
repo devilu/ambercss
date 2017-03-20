@@ -1,0 +1,31 @@
+.menu {
+	display: inline-block;
+	width: 100%;
+	font-weight: bold;
+	z-index: 1;
+	text-transform: uppercase;
+
+	& li {
+	  position: relative;
+
+		& span {
+			font-size: 12pt;
+			text-shadow: 1px 1px 0px grey;
+		
+			&::after {
+				content: "";
+				display: inline-block;
+				background-color: white;
+				opacity: 0.6;
+				height: 22px;
+				width: 1px;
+				position: absolute;
+				right: 0;
+				//bottom: calc 39%;
+			}
+		}
+		&:last-child span::after {
+			 background: none;
+		}
+	}
+}

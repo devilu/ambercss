@@ -1,0 +1,68 @@
+.color(@color,@value) {
+	@light: lighten(tint(@value, 16%),12%);
+	@dark: shade(@value, 50%);
+
+	// Border Color (1px solid)
+	&.@{color}-border {
+		border-color: contrast(@value,lighten(@value, 10%),darken(@value, 10%)) !important;
+	}
+	&.light@{color}-border {
+		border-color: contrast(@light,lighten(@light, 10%),darken(@light, 10%)) !important;
+	}
+	&.dark@{color}-border {
+		border-color: contrast(@dark,lighten(@dark, 10%),darken(@dark, 10%)) !important;
+	}
+
+	// Outlines
+	&.@{color}-outline {
+		outline-color: @value !important;
+	}
+	&.light@{color}-outline {
+		outline-color: @light !important;
+	}
+	&.dark@{color}-outline {
+		outline-color: @dark !important;
+	}
+
+}
+
+// Border radius in px
+.radius(10);
+.radius(@n, @i: 1) when (@i =< @n) {
+  @pix: @i * 2;
+  .radius-@{pix} {
+    border-radius: 1px * @i !important;
+    overflow: hidden;
+  }
+  .radius(@n, (@i + 1));
+}
+
+
+[class*="-border"] {
+	border-width: 1px;
+	border-style: solid;
+}
+[class*="-outline"] {
+	outline-width: 1px;
+	outline-style: solid;
+}
+
+.box-shadow {
+  box-shadow: 0 1px 4px grey;
+
+	&-hover {
+		box-shadow: 0 1px 4px grey;
+
+		&:hover {
+			box-shadow: 0 1px 4px 2px grey;
+		}
+
+	}
+
+}
+[class*="-hover"] {
+  transition-property: color, background-color;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in-out;
+  transition-delay: 300ms;
+}

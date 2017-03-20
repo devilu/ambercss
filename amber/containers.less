@@ -1,0 +1,127 @@
+.color(@color,@value) {
+	@light: lighten(tint(@value, 16%),12%);
+	@dark: shade(@value, 50%);
+
+	// Color combo (bg, border and contrast text)
+	&.@{color}-box {
+		color: contrast(@value,white,#333);
+    	background-color: @value !important;
+		border-color: contrast(@value,lighten(@value, 10%),darken(@value, 10%)) !important;
+
+		h1, h2, h3, h4, h5, h6 {
+
+			&:hover {
+				color: contrast(@value,tint(@value,50%),shade(@value,50%));
+			}
+		}
+    }
+  	&.light@{color}-box {
+		color: contrast(@light,white,#333);
+    	background-color: @light !important;
+		border-color: contrast(@light,lighten(@light, 10%),darken(@light, 10%)) !important;
+
+		h1, h2, h3, h4, h5, h6 {
+
+			&:hover {
+				color: contrast(@light,tint(@light,50%),shade(@light,50%));
+			}
+		}
+    }
+ 	&.dark@{color}-box {
+		color: contrast(@dark,white,#333);
+    	background-color: @dark !important;
+		border-color: contrast(@dark,lighten(@dark, 10%),darken(@dark, 10%)) !important;
+
+		h1, h2, h3, h4, h5, h6 {
+
+			&:hover {
+				color: contrast(@light,tint(@dark,50%),shade(@dark,50%));
+			}
+		}
+	}
+}
+
+[class*="text-"][class*="-hover"] {
+	transition-property: color;
+	transition-duration: 500ms;
+	transition-timing-function: ease-in-out;
+}
+[class*="-box"] {
+	border-style: solid;
+	border-width: 1px;
+	h1, h2, h3, h4, h5, h6 {
+		transition-duration: 500ms;
+		transition-property: color;
+		transition-timing-function: ease-in-out;
+	}
+}
+
+
+// Boxes
+.box {
+	display: inline-block;
+	padding: 8px 12px;
+	
+	a {font-weight: bold;}
+
+	&&-xs {padding: 2px 3px;}
+	&&-s {padding: 4px 6px;}
+	&&-m {padding: 8px 12px;}
+	&&-l {padding: 12px 18px;}
+	&&-xl {padding: 16px 24px;}
+	&&-xxl {padding: 28px 42px;}
+	&&-jumbo {padding: 56px 84px;}
+}
+
+// Cards
+.card {
+	box-shadow: 0 1px 4px grey;
+	.box();
+
+	&:hover {
+		--box-shadow-color: grey;
+		box-shadow: 0 0px 4px 2px var(--box-shadow-color);
+	}
+}
+
+// Rows and Cols
+// Containers
+.container {
+	display: inline-block;
+	width: 100%;
+
+	& .row {
+		display: flex !important;
+		flex-flow: row wrap;
+		width: 100%;
+
+		& > [class*="col-"] {
+			padding: inherit;
+		}
+
+	}
+
+}
+
+// Columns
+.span(12);
+
+.span(@n, @i: 1) when (@i =< @n) {
+  .span-@{i} {
+    width: (extract(@cols, @i)) !important;
+  }
+  .span(@n, (@i + 1));
+}
+
+.col(12);
+
+.col(@n, @i: 1) when (@i =< @n) {
+  .col-@{i} {
+    width: (extract(@cols, @i)) !important;
+  }
+  .col(@n, (@i + 1));
+}
+
+// Panels
+
+// Alerts

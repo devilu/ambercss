@@ -1,0 +1,52 @@
+.color(@color,@value) {
+	@light: lighten(tint(@value, 16%),12%);
+	@dark: shade(@value, 50%);
+
+	// Background Color
+	&.@{color} {
+		color: contrast(@value,white,#333);
+		background-color: @value !important;
+
+		&-hover {
+			color: contrast(@value,white,#333);
+			background-color: @value !important;
+
+			&:hover {
+				background-color: contrast(@value,lighten(@value,16%),darken(@value,16%)) !important;
+			}
+		}
+	}
+	&.light@{color} {
+		color: contrast(@light,white,#333);
+		background-color: @light !important;
+
+		&-hover {
+			color: contrast(@light,white,#333);
+			background-color: @light !important;
+
+			&:hover {
+				background-color: contrast(@light,lighten(@light,10%),darken(@light,10%)) !important;
+			}
+		}
+	}
+	&.dark@{color} {
+		color: contrast(@dark,white,#333);
+		background-color: @dark !important;
+
+		&-hover {
+			color: contrast(@dark,white,#333);
+			background-color: @dark !important;
+
+			&:hover {
+				background-color: contrast(@dark,lighten(@dark,10%),darken(@dark,10%)) !important;
+			}
+		}
+	}
+
+}
+
+// Transparent images for bgs
+.imgbg-white {background-image: url("../images/hoverWhite.png"); background-size: 100% 100%;}
+.imgbg-light {background-image: url("../images/hoverLight.png"); background-size: 100% 100%;}
+.imgbg-black {background-image: url("../images/hoverBlack.png"); background-size: 100% 100%;}
+.imgbg-dark {background-image: url("../images/hoverDark.png"); background-size: 100% 100%;}

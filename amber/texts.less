@@ -1,0 +1,73 @@
+// Font Sizes
+.text-xs {font-size: 8pt !important;}
+.text-s {font-size: 10pt !important;}
+.text-m {font-size: 12pt !important;}
+.text-l {font-size: 16pt !important}
+.text-xl {font-size: 22pt !important;}
+.text-xxl {font-size: 30pt !important;}
+.text-jumbo {font-size: 40pt !important;}
+
+// Text Aligns
+.text-center {text-align: center !important;}
+.text-left {text-align: left !important;}
+.text-right {text-align: right !important;}
+.text-justify {text-align: justify !important;}
+
+// line-heights
+.line-height-xs {line-height: 90% !important;}
+.line-height-s {line-height: 120% !important;}
+.line-height-m {line-height: 140% !important;}
+.line-height-l {line-height: 160% !important;}
+.line-height-xl {line-height: 180% !important;}
+.line-height-xxl {line-height: 2000% !important;}
+.line-height-jumbo {line-height: 240% !important;}
+
+// Text styles
+.text-strong {font-weight: bold;}
+.text-italic {font-style: italic;}
+.text-underline {text-decoration: underline;}
+.text-uppercase {text-transform: uppercase;}
+.text-shadow {
+	text-shadow: 1px 1px;
+
+	&-hover {
+		text-shadow: 1px 1px;
+
+		&:hover {
+			text-shadow: 0 0 4px;
+		}			
+	}
+}
+
+// No wrap
+.nowarp {white-space: nowrap;}
+
+// text colors
+.color(@color,@value) {
+	@light: lighten(tint(@value, 16%),12%);
+	@dark: shade(@value, 50%);
+
+	// Font Color
+	&.text-@{color} {
+		color: @value  !important;
+
+		&-hover:hover{
+			color: @value  !important;
+		}
+	}
+	&.text-light@{color} {
+		color: @light  !important;
+
+		&-hover:hover{
+			color: @light  !important;
+		}
+	}
+	&.text-dark@{color} {
+		color: @dark  !important;
+
+		&-hover:hover{
+			color: @light  !important;
+		}
+	}
+
+}

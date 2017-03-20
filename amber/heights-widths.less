@@ -1,0 +1,23 @@
+// Widths in %
+.ancho(20);
+.ancho(@n, @i: 1) when (@i =< @n) {
+  @perc: @i * 5;
+  .ancho-@{perc} {
+    width: 5% * @i !important;
+  }
+  .ancho(@n, (@i + 1));
+}
+.ancho-33 {width:33.33% !important}
+
+// Heights in px
+.alto(20);
+.alto(@n, @i: 1) when (@i =< @n) {
+  @pix: @i * 10;
+  .alto-@{pix} {
+    height: 10px * @i !important;
+  }
+  .alto(@n, (@i + 1));
+}
+
+.alto-max {height: 100%;}
+.ancho-max {width: 100%;}
